@@ -15,10 +15,8 @@ import androidx.appcompat.widget.Toolbar
 class MainActivity : AppCompatActivity(),View.OnClickListener{
 
     private var lister : ImageView ?= null
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         this.requestWindowFeature(Window.FEATURE_NO_TITLE)
 
         setContentView(R.layout.activity_main)
