@@ -68,8 +68,7 @@
             if (intent.hasExtra("key")) {
 
 
-
-                mTextView!!.text = intent.getStringExtra("key")
+                mTextView!!.text = intent?.getStringExtra("key")?.replace("\\n","\n")?.replace("\\t","\t")
                 mScrollView!!.setOnScrollChangeListener { _: NestedScrollView?, _: Int, scrollY: Int, _: Int, oldScrollY: Int ->
 
                     if (scrollY >= oldScrollY) {
