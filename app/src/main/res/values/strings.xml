@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">life_truths</string>
+    <string name="Grid_View_Title">የህይወት እዉነታ</string>
+    <string name="rate_it">✓ ደረጃ ይስጡ</string>
+    <string name="about_us">✓ ስለ እኛ</string>
+    <string name="more_apps">✓ ተጨማሪ አፕሊኬሽን</string>
+    <string name="support_us">✓ መተግበሪያችንን ይደግፉ</string>
+    <string name="action_settings">Settings</string>
+    <string name="detailOne">This is a Test!This is a Test!This is a Test!This is a Test!This is a Test! </string>
+    <string name="Share">Share This Article</string>
+    <string name="connectionFailed">ፅሁፎቹን ለማንበብ እባክዎን ኢንተርኔት አብርተዉ ይሞክሩ…</string>
+    <string name="connect_Button">እንደገና ይሞክሩ</string>
+    <string name="banner_ad">ca-app-pub-9156727777369518/1043244979</string>
+    <string name="title">ለ...</string>
+    <string name="twentyfive">25 ብር</string>
+    <string name="fifty">50 ብር</string>
+    <string name="fifteen">15 ብር</string>
+    <string name="ten">10 ብር</string>
+    <string name="five">5 ብር</string>
+    <string name="thank_you">እናመሰግናለን!!</string>
+    <string name="chooseText">ከዚህ በታች የመረጡትን ካርድ በመላክ ይህንን አፕ ይደግፉ!</string>
+    <string name="please_wait">ይጠብቁ..Please Wait</string>
+    <string name="privacy_policy">✓ Privacy Policy</string>
+
+</resources>

@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "690959287939",
+    "firebase_url": "https://yehiwot-ewneta.firebaseio.com",
+    "project_id": "yehiwot-ewneta",
+    "storage_bucket": "yehiwot-ewneta.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:690959287939:android:6f26636d95a0289c",
+        "android_client_info": {
+          "package_name": "afcethiopia.lifetruths"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "690959287939-tts9ma9e50iiu3ui2olnpmhk105igutn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAu0ZmBVNkP1fUogYuiyFbCk6HlDsoq0QY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
