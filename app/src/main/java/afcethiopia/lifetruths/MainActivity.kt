@@ -4,7 +4,9 @@ import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.*
-import android.view.animation.*
+import android.view.animation.AnimationSet
+import android.view.animation.RotateAnimation
+import android.view.animation.TranslateAnimation
 import android.widget.AdapterView.OnItemClickListener
 import android.widget.GridView
 import android.widget.ImageView
@@ -24,6 +26,7 @@ class MainActivity : AppCompatActivity(),View.OnClickListener{
         setSupportActionBar(toolbar)
         val gridView = findViewById<GridView>(R.id.GV)
         val adapter = CustomAdapter(this,R.layout.customlayout,data)
+        var mySelectedList = ""
 
 
          lister = findViewById(R.id.z_lister)
@@ -34,53 +37,44 @@ class MainActivity : AppCompatActivity(),View.OnClickListener{
 
       gridView.onItemClickListener = OnItemClickListener { _ ,_ , position ,_ ->
 
-         var intent  = Intent()
-         when (position) {
+          intent = Intent(this@MainActivity, MainList::class.java)
+          when (position) {
 
              0 -> {
-                  intent = Intent(this@MainActivity, One::class.java)
+                 mySelectedList = "zOne"
              }
              1 -> {
-
-                  intent = Intent(this@MainActivity, Two::class.java)
+                 mySelectedList = "zTwo"
              }
              2 -> {
-
-               intent = Intent(this@MainActivity,Three::class.java)
+                 mySelectedList = "zThree"
              }
-
              3 -> {
-
-                  intent = Intent(this@MainActivity,Four::class.java)
+                 mySelectedList = "zFour"
              }
              4 -> {
-
-                 intent = Intent(this@MainActivity,Five::class.java)
-
+                 mySelectedList = "zFive"
              }
              5 -> {
-
-                  intent = Intent(this@MainActivity,Six::class.java)
+                 mySelectedList = "zSix"
              }
              6 -> {
-                  intent = Intent (this@MainActivity,Seven::class.java)
+                 mySelectedList = "zSeven"
              }
-
              7 -> {
-                  intent = Intent(this@MainActivity,Eight::class.java)
-                 intentController(intent)
+                 mySelectedList = "zEight"
              }
-
              8 -> {
-                 intent = Intent(this@MainActivity,Nine::class.java)
+                 mySelectedList = "zNine"
              }
              9 -> {
-                  intent = Intent (this@MainActivity,Ten::class.java)
+                 mySelectedList = "zTen"
              }
              else -> {
                  Log.d("error","Please check your code!")
              }
          }
+          intent.putExtra("contentName", mySelectedList)
           intentController(intent)
      }
 
@@ -152,7 +146,7 @@ class MainActivity : AppCompatActivity(),View.OnClickListener{
 
         }
 
-    val data : ArrayList <CustomLayout>
+    private val data: ArrayList<CustomLayout>
         get()
 
     {

@@ -3,11 +3,11 @@
     import android.graphics.Typeface
     import android.os.Bundle
     import android.os.Handler
-    import androidx.core.widget.NestedScrollView
     import android.view.View
     import android.widget.RelativeLayout
     import android.widget.TextView
     import androidx.appcompat.app.AppCompatActivity
+    import androidx.core.widget.NestedScrollView
     import com.google.android.gms.ads.AdRequest
     import com.google.android.gms.ads.AdView
     import com.google.android.gms.ads.InterstitialAd
@@ -15,7 +15,6 @@
     import com.google.android.material.floatingactionbutton.FloatingActionButton
     import com.google.firebase.perf.FirebasePerformance
     import com.google.firebase.perf.metrics.Trace
-
 
 
     /**
@@ -79,10 +78,8 @@
                                 , 1000)
 
                     } else {
-
                         myButton.show()
                     }
-
                 }
 
             }

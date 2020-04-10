@@ -47,55 +47,11 @@
 
         </activity>
 
-        <activity android:name=".One"
+        <activity
+            android:name=".MainList"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
-
-
-        <activity android:name=".Two"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
-
-
-        <activity android:name=".Three"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
-
-
-        <activity android:name=".Four"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
-
-
-        <activity android:name=".Five"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
-
-
-        <activity android:name=".Six"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
-
-
-        <activity android:name=".Seven"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
-
-
-        <activity android:name=".Eight"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
-
-        <activity android:name=".Nine"
-            android:theme="@style/AppTheme.NoActionBar">
-
-        </activity>
-
-        <activity android:name=".Ten"
-            android:theme="@style/AppTheme.NoActionBar">
-
-        </activity>
-
+        
         <activity android:name=".MainDetail"
             android:theme="@style/AppTheme.NoActionBar">
 
