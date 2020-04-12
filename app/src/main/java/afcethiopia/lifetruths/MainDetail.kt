@@ -3,15 +3,14 @@
     import android.graphics.Typeface
     import android.os.Bundle
     import android.os.Handler
+    import android.util.DisplayMetrics
     import android.view.View
+    import android.widget.FrameLayout
     import android.widget.RelativeLayout
     import android.widget.TextView
     import androidx.appcompat.app.AppCompatActivity
     import androidx.core.widget.NestedScrollView
-    import com.google.android.gms.ads.AdRequest
-    import com.google.android.gms.ads.AdView
-    import com.google.android.gms.ads.InterstitialAd
-    import com.google.android.gms.ads.MobileAds
+    import com.google.android.gms.ads.*
     import com.google.android.material.floatingactionbutton.FloatingActionButton
     import com.google.firebase.perf.FirebasePerformance
     import com.google.firebase.perf.metrics.Trace
@@ -27,31 +26,47 @@
         private var mScrollView: NestedScrollView? = null
         private var zTypeFace: Typeface? = null
         private lateinit var mInterstitialAd: InterstitialAd
-        private lateinit var mAdView : AdView
+        private lateinit var adContainerView: FrameLayout
+        private lateinit var adView: AdView
+        private val adSize: AdSize
+            get() {
+                val display = windowManager.defaultDisplay
+                val outMetrics = DisplayMetrics()
+                display.getMetrics(outMetrics)
+
+                val density = outMetrics.density
+
+                var adWidthPixels = adView.width.toFloat()
+                if (adWidthPixels == 0f) {
+                    adWidthPixels = outMetrics.widthPixels.toFloat()
+                }
+                val adWidth = (adWidthPixels / density).toInt()
+                return AdSize.getCurrentOrientationAnchoredAdaptiveBannerAdSize(this, adWidth)
+            }
 
         companion object {
-
             var detailControl = 0
+            private const val AD_UNIT_ID = "ca-app-pub-3940256099942544/6300978111" // TODO: This is a test banner ad!
         }
 
         override fun onCreate(savedInstanceState: Bundle?) {
             super.onCreate(savedInstanceState)
-            setContentView(R.layout.detailone)
+            setContentView(R.layout.detailview)
             MobileAds.initialize(this, "ca-app-pub-9156727777369518/1421205842")
 
+            adContainerView = findViewById(R.id.myAdaptBanner)
+            adView = AdView(this)
+            adContainerView.addView(adView)
+            loadBanner()
             mInterstitialAd = InterstitialAd(this)
-            mInterstitialAd.adUnitId = "ca-app-pub-9156727777369518/1421205842"
+            //  mInterstitialAd.adUnitId = "ca-app-pub-9156727777369518/1421205842"  // Real Ad
+            mInterstitialAd.adUnitId = "ca-app-pub-3940256099942544/1033173712"  // Test Ad
             mInterstitialAd.loadAd(AdRequest.Builder().build())
-
-            mAdView = findViewById(R.id.myBanner)
-            mAdView.loadAd(AdRequest.Builder().build())
-
 
             val myButton = findViewById<FloatingActionButton>(R.id.butOne)
             val interstitialBreak = findViewById<RelativeLayout>(R.id.detailInterstitialBreak)
 
             myButton.show()
-
 
             mTextView = findViewById(R.id.myText)
             mScrollView = findViewById(R.id.zScroll)
@@ -128,6 +143,13 @@
 
             myTrace.stop()
 
+        }
+
+        private fun loadBanner() {
+            adView.adUnitId = AD_UNIT_ID
+            adView.adSize = adSize
+            val adRequest = AdRequest.Builder().build()
+            adView.loadAd(adRequest)
         }
     }
 

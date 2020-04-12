@@ -1,29 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:ads="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/almostWhite">
 
-
-    <com.google.android.gms.ads.AdView
-        xmlns:ads="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/myBanner"
+    <FrameLayout
+        android:id="@+id/myAdaptBanner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        ads:adSize="SMART_BANNER"
-        android:layout_alignParentTop="true"
-        ads:adUnitId="@string/banner_ad"/>
+        android:layout_above="@+id/zScroll"
+        android:layout_alignParentBottom="true" />
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/zScroll"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/myBanner"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="60dp">
 
         <TextView
             android:id="@+id/myText"
@@ -41,7 +37,6 @@
 
     </androidx.core.widget.NestedScrollView>
 
-
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/butOne"
         android:layout_width="wrap_content"
@@ -51,7 +46,7 @@
         android:src="@android:drawable/ic_menu_share"
         android:text="@string/Share"
         app:backgroundTint="?android:attr/textColorPrimary"
-        android:layout_marginBottom="26dp"
+        android:layout_marginBottom="90dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
@@ -63,7 +58,6 @@
         android:visibility="gone">
 
         <TextView
-
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/black"
