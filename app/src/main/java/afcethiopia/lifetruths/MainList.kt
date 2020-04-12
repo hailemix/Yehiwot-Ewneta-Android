@@ -6,15 +6,14 @@ import android.graphics.Typeface
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
+import android.util.DisplayMetrics
 import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import com.google.android.gms.ads.AdRequest
-import com.google.android.gms.ads.InterstitialAd
-import com.google.android.gms.ads.MobileAds
+import com.google.android.gms.ads.*
 import com.google.firebase.database.*
 import java.util.*
 
@@ -22,13 +21,30 @@ import java.util.*
  * Created by HaileApp on 9/4/17.
  *
  */
-
 class MainList : AppCompatActivity() {
 
-    private var mTypeFace :Typeface ?= null
+    private var mTypeFace : Typeface ?= null
     private lateinit var mInterstitialAd: InterstitialAd
+    private lateinit var adContainerView : FrameLayout
+    private lateinit var adView: AdView
+    private val adSize: AdSize
+        get(){
+            val display = windowManager.defaultDisplay
+            val outMetrics = DisplayMetrics()
+            display.getMetrics(outMetrics)
+
+            val density = outMetrics.density
+
+            var adWidthPixels = adView.width.toFloat()
+            if(adWidthPixels == 0f){
+                adWidthPixels = outMetrics.widthPixels.toFloat()
+            }
+            val adWidth = (adWidthPixels / density).toInt()
+            return AdSize.getCurrentOrientationAnchoredAdaptiveBannerAdSize(this, adWidth)
+        }
     companion object {
         private var clickCounter = 0
+        private const val AD_UNIT_ID = "ca-app-pub-3940256099942544/6300978111" // TODO: This is a test banner ad!
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,9 +52,18 @@ class MainList : AppCompatActivity() {
         setContentView(R.layout.listview)
 
         MobileAds.initialize(this)
+
+        adContainerView = findViewById(R.id.myAdaptiveBanner)
+        adView = AdView(this)
+        adContainerView.addView(adView)
+        loadBanner()
+
         mInterstitialAd = InterstitialAd(this)
-        mInterstitialAd.adUnitId = "ca-app-pub-9156727777369518/1421205842"
+        //   mInterstitialAd.adUnitId = "ca-app-pub-9156727777369518/1421205842"   This is Real Ad
+        mInterstitialAd.adUnitId = "ca-app-pub-3940256099942544/1033173712"  // Test Ad
+
         mInterstitialAd.loadAd(AdRequest.Builder().build())
+
         val myListView = findViewById<ListView>(R.id.LV)
         val noConnection = findViewById<TextView>(R.id.no_connection)
         val connectionProgress = findViewById<ProgressBar>(R.id.progress_bar)
@@ -59,9 +84,9 @@ class MainList : AppCompatActivity() {
 
             val arrayAdapter = object : ArrayAdapter<String>(this, android.R.layout.simple_selectable_list_item, mainLister) {
                 override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
-                     val textView = super.getView(position, convertView, parent) as TextView
-                     textView.textSize = 20f
-                     textView.typeface = mTypeFace
+                    val textView = super.getView(position, convertView, parent) as TextView
+                    textView.textSize = 20f
+                    textView.typeface = mTypeFace
                     return textView
                 }
             }
@@ -70,8 +95,8 @@ class MainList : AppCompatActivity() {
 
         zButton.setOnClickListener {
 
-               noConnection.visibility = View.INVISIBLE
-               connectionProgress.visibility = View.VISIBLE
+            noConnection.visibility = View.INVISIBLE
+            connectionProgress.visibility = View.VISIBLE
             connectionProgress.postDelayed({
                 if(connectionProgress.isShown){
 
@@ -90,7 +115,7 @@ class MainList : AppCompatActivity() {
                 }
             },10000)
 
-           }
+        }
 
         databaseReference.addChildEventListener(object : ChildEventListener {
 
@@ -133,8 +158,8 @@ class MainList : AppCompatActivity() {
                             startActivity(intent)
                         }
                     }
-              }
-        }
+                }
+            }
             override fun onCancelled(p0: DatabaseError) = Unit
             override fun onChildMoved(p0: DataSnapshot, p1: String?) = Unit
             override fun onChildChanged(p0: DataSnapshot, p1: String?) = Unit
@@ -150,6 +175,12 @@ class MainList : AppCompatActivity() {
             }
             override fun onCancelled(p0: DatabaseError) = Unit
         })
+    }
+    private fun loadBanner(){
+        adView.adUnitId = AD_UNIT_ID
+        adView.adSize = adSize
+        val adRequest = AdRequest.Builder().build()
+        adView.loadAd(adRequest)
     }
 }
 

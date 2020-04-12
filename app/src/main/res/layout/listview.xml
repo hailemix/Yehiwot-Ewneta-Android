@@ -47,13 +47,13 @@
 
         <Button
             android:id="@+id/zConnect"
-            android:layout_width="100dp"
-            android:layout_height="50dp"
-            android:layout_marginBottom="42dp"
+            android:layout_width="180dp"
+            android:layout_height="70dp"
+            android:layout_marginBottom="100dp"
             android:text="@string/connect_Button"
-            android:textSize="14sp"
+            android:textSize="18sp"
             style="@style/AppTheme.RoundedCornerMaterialButton"
-            android:textColor="@color/pure_white"
+            android:textColor="@color/black"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true" />
     </RelativeLayout>
@@ -67,6 +67,13 @@
         android:background="@color/backgroundDarker"
         android:visibility="gone"
         />
+
+    <FrameLayout
+        android:id="@+id/myAdaptiveBanner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_above="@+id/LV"/>
 
     <RelativeLayout
         android:id="@+id/mInterstitialAdBreak"
