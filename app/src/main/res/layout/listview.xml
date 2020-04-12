@@ -55,6 +55,12 @@
     </RelativeLayout>
 
 
+    <FrameLayout
+        android:id="@+id/myAdaptiveBanner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true" />
+
     <ListView
         android:id="@+id/LV"
         android:layout_width="match_parent"
@@ -62,14 +68,8 @@
         android:layout_below="@id/listTitle"
         android:background="@color/backgroundDarker"
         android:visibility="gone"
+        android:layout_marginBottom="60dp"
         />
-
-    <FrameLayout
-        android:id="@+id/myAdaptiveBanner"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_above="@+id/LV"/>
 
     <RelativeLayout
         android:id="@+id/mInterstitialAdBreak"
