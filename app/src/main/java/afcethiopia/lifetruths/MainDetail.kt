@@ -41,7 +41,8 @@
                     adWidthPixels = outMetrics.widthPixels.toFloat()
                 }
                 val adWidth = (adWidthPixels / density).toInt()
-                return AdSize.getCurrentOrientationAnchoredAdaptiveBannerAdSize(this, adWidth)
+                return AdSize.getPortraitAnchoredAdaptiveBannerAdSize(this, adWidth)
+
             }
 
         companion object {

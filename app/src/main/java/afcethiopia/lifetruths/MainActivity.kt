@@ -12,16 +12,32 @@ import android.widget.GridView
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.InterstitialAd
+import com.google.android.gms.ads.MobileAds
 
 
 class MainActivity : AppCompatActivity(),View.OnClickListener{
 
-    private var lister : ImageView ?= null
+       private var lister : ImageView ?= null
+       private lateinit var mInterstitialAd: InterstitialAd
+
+
+    companion object {
+        private var gridClickCounter = 0
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         this.requestWindowFeature(Window.FEATURE_NO_TITLE)
-
         setContentView(R.layout.activity_main)
+        MobileAds.initialize(this)
+
+        mInterstitialAd = InterstitialAd(this)
+        //   mInterstitialAd.adUnitId = "ca-app-pub-9156727777369518/1421205842"   // Real Ad
+        mInterstitialAd.adUnitId = "ca-app-pub-3940256099942544/1033173712"       //  Test Ad
+
+        mInterstitialAd.loadAd(AdRequest.Builder().build())
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
         val gridView = findViewById<GridView>(R.id.GV)
@@ -37,6 +53,11 @@ class MainActivity : AppCompatActivity(),View.OnClickListener{
 
       gridView.onItemClickListener = OnItemClickListener { _ ,_ , position ,_ ->
 
+          gridClickCounter +=1
+
+          if(gridClickCounter % 4 == 0){
+              mInterstitialAd.show()
+          }
           intent = Intent(this@MainActivity, MainList::class.java)
           when (position) {
 

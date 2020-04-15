@@ -3,9 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Final Latest Yehiwot ewneta.iml" filepath="$PROJECT_DIR$/Final Latest Yehiwot ewneta.iml" group="Final Latest Yehiwot ewneta" />
-      <module fileurl="file://$PROJECT_DIR$/app/Final Latest Yehiwot ewneta-app.iml" filepath="$PROJECT_DIR$/app/Final Latest Yehiwot ewneta-app.iml" group="Final Latest Yehiwot ewneta/app" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="lifetruths/app" />
-      <module fileurl="file://$PROJECT_DIR$/lifetruths.iml" filepath="$PROJECT_DIR$/lifetruths.iml" group="lifetruths" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="Final Latest Yehiwot ewneta/app" />
     </modules>
   </component>
 </project>

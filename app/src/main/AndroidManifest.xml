@@ -7,7 +7,6 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/life_truth_icon"
@@ -17,48 +16,59 @@
         android:theme="@style/AppTheme"
         android:fullBackupContent="true">
 
-        <meta-data   android:name="android.max_aspect" android:value="2.1"> </meta-data>
+        <meta-data
+            android:name="android.max_aspect"
+            android:value="2.1"> </meta-data>
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="ca-app-pub-9156727777369518~3860022145" />
         <activity
             android:name=".MainActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.DEFAULT" />
-
             </intent-filter>
-
         </activity>
 
         <activity
-            android:name=".Splash" android:theme="@style/AppTheme.NoActionBar">
+            android:name=".Splash"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
 
-        <activity android:name=".AboutUs"
-            android:theme="@style/AppTheme.NoActionBar">
-
+        <activity
+            android:name=".AboutUs"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
         </activity>
 
         <activity
             android:name=".MainList"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
         </activity>
         
-        <activity android:name=".MainDetail"
-            android:theme="@style/AppTheme.NoActionBar">
+        <activity
+            android:name=".MainDetail"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
 
         </activity>
 
-
-        <service android:name=".MyFirebaseMessagingService"
+        <service
+            android:name=".MyFirebaseMessagingService"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
@@ -66,7 +76,8 @@
 
         </service>
 
-        <service android:name=".MyFirebaseInstanceIDService"
+        <service
+            android:name=".MyFirebaseInstanceIDService"
             android:exported="true">
             <intent-filter>
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
@@ -80,7 +91,6 @@
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_color"
             android:resource="@color/notification_color" />
-
 
     </application>
 

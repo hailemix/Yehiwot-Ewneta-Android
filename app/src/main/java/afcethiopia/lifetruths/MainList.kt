@@ -40,7 +40,7 @@ class MainList : AppCompatActivity() {
                 adWidthPixels = outMetrics.widthPixels.toFloat()
             }
             val adWidth = (adWidthPixels / density).toInt()
-            return AdSize.getCurrentOrientationAnchoredAdaptiveBannerAdSize(this, adWidth)
+            return AdSize.getPortraitAnchoredAdaptiveBannerAdSize(this, adWidth)
         }
     companion object {
         private var clickCounter = 0
@@ -127,7 +127,7 @@ class MainList : AppCompatActivity() {
                 myListView.onItemClickListener = AdapterView.OnItemClickListener { _, _, position, _ ->
 
                     clickCounter += 1
-                    if (clickCounter % 3 == 0) {
+                    if (clickCounter % 4 == 0) {
                         interstitialController.visibility = View.VISIBLE
                         Handler().postDelayed({
                             if (mInterstitialAd.isLoaded) {
