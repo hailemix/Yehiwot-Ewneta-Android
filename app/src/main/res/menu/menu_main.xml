@@ -9,6 +9,11 @@ tools:context="afcethiopia.lifetruths.MainActivity">
     app:showAsAction="ifRoom"/>
 
 <item
+    android:id="@+id/youtube_videos"
+    android:orderInCategory="100"
+    android:title="@string/youtube_videos"
+    app:showAsAction="never" />
+<item
     android:id="@+id/more_apps"
     android:title="@string/more_apps"
     app:showAsAction="ifRoom" />
@@ -24,6 +29,5 @@ tools:context="afcethiopia.lifetruths.MainActivity">
     android:orderInCategory="100"
     android:title="@string/privacy_policy"
     app:showAsAction="never" />
-
 
 </menu>

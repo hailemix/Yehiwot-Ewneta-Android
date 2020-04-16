@@ -150,6 +150,17 @@ class MainActivity : AppCompatActivity(),View.OnClickListener{
                 return true
             }
 
+            R.id.youtube_videos -> {
+
+                val videoUrl = "https://youtu.be/VXYTs7rkqec"
+                try {
+                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(videoUrl))
+                    startActivity(intent)
+                } catch(e : Throwable){
+                    print("Error in Connecting to the server.Please check at $e")
+                }
+                return true
+            }
             R.id.action_privacy -> {
 
                 val linkUrl = "https://ethiocoderzone.wordpress.com/2018/10/11/%E1%8B%A8%E1%88%85%E1%8B%AD%E1%8B%88%E1%89%B5-%E1%8A%A5%E1%8B%89%E1%8A%90%E1%89%B3-ethiopian-life-truth/"
