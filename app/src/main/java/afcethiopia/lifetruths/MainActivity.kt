@@ -8,7 +8,6 @@ import android.view.animation.AnimationSet
 import android.view.animation.RotateAnimation
 import android.view.animation.TranslateAnimation
 import android.widget.AdapterView.OnItemClickListener
-import android.widget.Button
 import android.widget.GridView
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
@@ -16,7 +15,7 @@ import androidx.appcompat.widget.Toolbar
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.InterstitialAd
 import com.google.android.gms.ads.MobileAds
-import java.lang.RuntimeException
+
 
 
 class MainActivity : AppCompatActivity(),View.OnClickListener{
