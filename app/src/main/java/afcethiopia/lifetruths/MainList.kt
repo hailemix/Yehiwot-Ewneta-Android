@@ -44,7 +44,7 @@ class MainList : AppCompatActivity() {
         }
     companion object {
         private var clickCounter = 0
-        private const val AD_UNIT_ID = "ca-app-pub-3940256099942544/6300978111" // TODO: This is a test banner ad!
+        private const val AD_UNIT_ID = "ca-app-pub-9156727777369518/1043244979"  // Real Banner Ad
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -52,16 +52,13 @@ class MainList : AppCompatActivity() {
         setContentView(R.layout.listview)
 
         MobileAds.initialize(this)
-
         adContainerView = findViewById(R.id.myAdaptiveBanner)
         adView = AdView(this)
         adContainerView.addView(adView)
         loadBanner()
 
         mInterstitialAd = InterstitialAd(this)
-        //   mInterstitialAd.adUnitId = "ca-app-pub-9156727777369518/1421205842"   This is Real Ad
-        mInterstitialAd.adUnitId = "ca-app-pub-3940256099942544/1033173712"  // Test Ad
-
+        mInterstitialAd.adUnitId = "ca-app-pub-9156727777369518/1421205842"   // Real Interstitial Ad
         mInterstitialAd.loadAd(AdRequest.Builder().build())
 
         val myListView = findViewById<ListView>(R.id.LV)

@@ -8,6 +8,7 @@ import android.view.animation.AnimationSet
 import android.view.animation.RotateAnimation
 import android.view.animation.TranslateAnimation
 import android.widget.AdapterView.OnItemClickListener
+import android.widget.Button
 import android.widget.GridView
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
@@ -15,6 +16,7 @@ import androidx.appcompat.widget.Toolbar
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.InterstitialAd
 import com.google.android.gms.ads.MobileAds
+import java.lang.RuntimeException
 
 
 class MainActivity : AppCompatActivity(),View.OnClickListener{
@@ -34,9 +36,7 @@ class MainActivity : AppCompatActivity(),View.OnClickListener{
         MobileAds.initialize(this)
 
         mInterstitialAd = InterstitialAd(this)
-        //   mInterstitialAd.adUnitId = "ca-app-pub-9156727777369518/1421205842"   // Real Ad
-        mInterstitialAd.adUnitId = "ca-app-pub-3940256099942544/1033173712"       //  Test Ad
-
+        mInterstitialAd.adUnitId = "ca-app-pub-9156727777369518/1421205842"   // Real Interstitial Ad
         mInterstitialAd.loadAd(AdRequest.Builder().build())
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
@@ -50,6 +50,7 @@ class MainActivity : AppCompatActivity(),View.OnClickListener{
          lister!!.setOnClickListener(this)
          gridView.adapter = adapter
          gridView.isVerticalScrollBarEnabled = false
+
 
       gridView.onItemClickListener = OnItemClickListener { _ ,_ , position ,_ ->
 

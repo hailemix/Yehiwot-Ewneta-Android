@@ -15,7 +15,6 @@
     import com.google.firebase.perf.FirebasePerformance
     import com.google.firebase.perf.metrics.Trace
 
-
     /**
      * Created by user on 7/6/17.
      *
@@ -42,26 +41,24 @@
                 }
                 val adWidth = (adWidthPixels / density).toInt()
                 return AdSize.getPortraitAnchoredAdaptiveBannerAdSize(this, adWidth)
-
             }
 
         companion object {
             var detailControl = 0
-            private const val AD_UNIT_ID = "ca-app-pub-3940256099942544/6300978111" // TODO: This is a test banner ad!
+            private const val AD_UNIT_ID = "ca-app-pub-9156727777369518/1043244979"  // Real Banner Ad
         }
 
         override fun onCreate(savedInstanceState: Bundle?) {
             super.onCreate(savedInstanceState)
             setContentView(R.layout.detailview)
-            MobileAds.initialize(this, "ca-app-pub-9156727777369518/1421205842")
+            MobileAds.initialize(this)    // Real Interstitial Ad
 
             adContainerView = findViewById(R.id.myAdaptBanner)
             adView = AdView(this)
             adContainerView.addView(adView)
             loadBanner()
             mInterstitialAd = InterstitialAd(this)
-            //  mInterstitialAd.adUnitId = "ca-app-pub-9156727777369518/1421205842"  // Real Ad
-            mInterstitialAd.adUnitId = "ca-app-pub-3940256099942544/1033173712"  // Test Ad
+            mInterstitialAd.adUnitId = "ca-app-pub-9156727777369518/1421205842"   // Real Interstitial Ad
             mInterstitialAd.loadAd(AdRequest.Builder().build())
 
             val myButton = findViewById<FloatingActionButton>(R.id.butOne)
@@ -92,20 +89,16 @@
                             myButton.hide()
                         }
                                 , 1000)
-
                     } else {
                         myButton.show()
                     }
                 }
-
             }
 
             myButton.setOnClickListener {
 
-
                 detailControl += 1
                 myButton.isSoundEffectsEnabled = true
-
 
                 if(detailControl % 3 == 0){
 
@@ -115,7 +108,6 @@
                     Handler().postDelayed({
 
                         if (mInterstitialAd.isLoaded) {
-
                             mInterstitialAd.show()
                         }
 
@@ -125,7 +117,6 @@
 
                         interstitialBreak.visibility = View.GONE
                         myButton.show()
-
                     },4000)
 
                 }
@@ -134,16 +125,12 @@
 
                     val myIntent = Intent()
                     myIntent.action = Intent.ACTION_SEND
-                    myIntent.type = "text/plain"               //   In java type is called as setType...
+                    myIntent.type = "text/plain"              //   In java type is called as setType...
                     myIntent.putExtra(Intent.EXTRA_TEXT, mTextView!!.text.toString())
                     startActivity(Intent.createChooser(myIntent,resources.getText(R.string.title)))
-
                 }
-
             }
-
             myTrace.stop()
-
         }
 
         private fun loadBanner() {
