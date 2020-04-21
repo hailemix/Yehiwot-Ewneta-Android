@@ -125,7 +125,7 @@ class MainActivity : AppCompatActivity(),View.OnClickListener{
 
         when(item!!.itemId) {
             R.id.about -> {
-                val intent = Intent(this, AboutUs::class.java)
+                val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.ethiocoders.dev"))
                 intentController(intent)
                  return true
             }

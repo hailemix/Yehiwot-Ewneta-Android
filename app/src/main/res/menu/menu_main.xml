@@ -22,8 +22,7 @@ tools:context="afcethiopia.lifetruths.MainActivity">
     android:id="@+id/rate"
     android:checked="false"
     android:title="@string/rate_it"
-    app:showAsAction="ifRoom"
-    tools:icon="@drawable/about_us" />
+    app:showAsAction="ifRoom" />
 <item
     android:id="@+id/action_privacy"
     android:orderInCategory="100"

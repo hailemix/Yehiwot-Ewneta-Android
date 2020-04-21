@@ -141,8 +141,6 @@ class MainList : AppCompatActivity() {
                     } else {
                         val intent = Intent(this@MainList, MainDetail::class.java)
                         intent.putExtra("key", childArrayHolder[position])
-                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
 
                         try{
                             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
