@@ -124,7 +124,7 @@ class MainList : AppCompatActivity() {
                 myListView.onItemClickListener = AdapterView.OnItemClickListener { _, _, position, _ ->
 
                     clickCounter += 1
-                    if (clickCounter % 4 == 0) {
+                    if (clickCounter % 3 == 0) {
                         interstitialController.visibility = View.VISIBLE
                         Handler().postDelayed({
                             if (mInterstitialAd.isLoaded) {

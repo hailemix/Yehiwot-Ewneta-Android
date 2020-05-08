@@ -55,7 +55,7 @@ class MainActivity : AppCompatActivity(),View.OnClickListener{
 
           gridClickCounter +=1
 
-          if(gridClickCounter % 4 == 0){
+          if (gridClickCounter % 3 == 0) {
               mInterstitialAd.show()
           }
           intent = Intent(this@MainActivity, MainList::class.java)
@@ -121,9 +121,9 @@ class MainActivity : AppCompatActivity(),View.OnClickListener{
 
     }
 
-    override fun onContextItemSelected(item: MenuItem?): Boolean {
+    override fun onContextItemSelected(item: MenuItem): Boolean {
 
-        when(item!!.itemId) {
+        when (item.itemId) {
             R.id.about -> {
                 val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.ethiocoders.dev"))
                 intentController(intent)
