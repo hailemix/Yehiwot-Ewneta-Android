@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Final Latest Yehiwot ewneta.iml" filepath="$PROJECT_DIR$/Final Latest Yehiwot ewneta.iml" group="Final Latest Yehiwot ewneta" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="Final Latest Yehiwot ewneta/app" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Yehiwot-Ewneta-Android.iml" filepath="$PROJECT_DIR$/.idea/modules/Yehiwot-Ewneta-Android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Yehiwot-Ewneta-Android.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Yehiwot-Ewneta-Android.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/nativetemplates/Yehiwot-Ewneta-Android.nativetemplates.iml" filepath="$PROJECT_DIR$/.idea/modules/nativetemplates/Yehiwot-Ewneta-Android.nativetemplates.iml" />
     </modules>
   </component>
 </project>

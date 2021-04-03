@@ -40,7 +40,6 @@ class CustomAdapter (private val getContext : Context ,private val CustomLayoutI
     }
 
     class ViewHolder {
-
         internal var img: ImageView? = null
     }
 }

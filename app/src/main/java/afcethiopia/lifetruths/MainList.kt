@@ -5,9 +5,7 @@ import android.content.Intent
 import android.graphics.Typeface
 import android.os.Build
 import android.os.Bundle
-import android.os.Handler
 import android.util.DisplayMetrics
-import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
@@ -21,20 +19,24 @@ import java.util.*
  * Created by HaileApp on 9/4/17.
  *
  */
-class MainList : AppCompatActivity() {
+class MainList(bannerId: BannerIdCode = BannerImpl()) : AppCompatActivity(), BannerIdCode by bannerId {
 
     private var mTypeFace : Typeface ?= null
-    private lateinit var mInterstitialAd: InterstitialAd
-    private lateinit var adContainerView : FrameLayout
+    private lateinit var bannerAdView : FrameLayout
     private lateinit var adView: AdView
     private val adSize: AdSize
-        get(){
-            val display = windowManager.defaultDisplay
+        get() {
             val outMetrics = DisplayMetrics()
-            display.getMetrics(outMetrics)
-
+            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.R){
+                val display = display
+                display?.getRealMetrics(outMetrics)
+            } else {
+                @Suppress("DEPRECATION")
+                val display = windowManager.defaultDisplay
+                @Suppress("DEPRECATION")
+                display.getRealMetrics(outMetrics)
+            }
             val density = outMetrics.density
-
             var adWidthPixels = adView.width.toFloat()
             if(adWidthPixels == 0f){
                 adWidthPixels = outMetrics.widthPixels.toFloat()
@@ -42,30 +44,18 @@ class MainList : AppCompatActivity() {
             val adWidth = (adWidthPixels / density).toInt()
             return AdSize.getPortraitAnchoredAdaptiveBannerAdSize(this, adWidth)
         }
-    companion object {
-        private var clickCounter = 0
-        private const val AD_UNIT_ID = "ca-app-pub-9156727777369518/1043244979"  // Real Banner Ad
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.listview)
-
-        MobileAds.initialize(this)
-        adContainerView = findViewById(R.id.myAdaptiveBanner)
+        bannerAdView = findViewById(R.id.listAdaptiveBanner)
         adView = AdView(this)
-        adContainerView.addView(adView)
+        bannerAdView.addView(adView)
         loadBanner()
-
-        mInterstitialAd = InterstitialAd(this)
-        mInterstitialAd.adUnitId = "ca-app-pub-9156727777369518/1421205842"   // Real Interstitial Ad
-        mInterstitialAd.loadAd(AdRequest.Builder().build())
-
         val myListView = findViewById<ListView>(R.id.LV)
         val noConnection = findViewById<TextView>(R.id.no_connection)
         val connectionProgress = findViewById<ProgressBar>(R.id.progress_bar)
         val zButton = findViewById<Button>(R.id.zConnect)
-        val interstitialController = findViewById<RelativeLayout>(R.id.mInterstitialAdBreak)
         val childArrayHolder = ArrayList<String>()
         val mainLister = ArrayList<String>()
         myListView.emptyView = noConnection
@@ -78,7 +68,6 @@ class MainList : AppCompatActivity() {
         databaseReference.keepSynced(true)
 
         fun contentList() {
-
             val arrayAdapter = object : ArrayAdapter<String>(this, android.R.layout.simple_selectable_list_item, mainLister) {
                 override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
                     val textView = super.getView(position, convertView, parent) as TextView
@@ -91,12 +80,10 @@ class MainList : AppCompatActivity() {
         }
 
         zButton.setOnClickListener {
-
             noConnection.visibility = View.INVISIBLE
             connectionProgress.visibility = View.VISIBLE
             connectionProgress.postDelayed({
                 if(connectionProgress.isShown){
-
                     zButton.visibility = View.INVISIBLE
                 }
 
@@ -123,36 +110,14 @@ class MainList : AppCompatActivity() {
                 childArrayHolder.add(playerName!!)
                 myListView.onItemClickListener = AdapterView.OnItemClickListener { _, _, position, _ ->
 
-                    clickCounter += 1
-                    if (clickCounter % 3 == 0) {
-                        interstitialController.visibility = View.VISIBLE
-                        Handler().postDelayed({
-                            if (mInterstitialAd.isLoaded) {
-                                mInterstitialAd.show()
-                            } else {
-                                Log.d("TAG", "The interstitial ad is not ready yet")
-                            }
-                        }, 3000)
-
-                        Handler().postDelayed({
-                            interstitialController.visibility = View.GONE
-                        },4000)
-
-                    } else {
                         val intent = Intent(this@MainList, MainDetail::class.java)
                         intent.putExtra("key", childArrayHolder[position])
 
                         try{
-                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-                                startActivity(intent, makeSceneTransitionAnimation(this@MainList).toBundle())
-                            }
-                            else {
-                                startActivity(intent)
-                            }
+                            startActivity(intent, makeSceneTransitionAnimation(this@MainList).toBundle())
                         } catch(e: NoSuchMethodError){
                             startActivity(intent)
                         }
-                    }
                 }
             }
             override fun onCancelled(p0: DatabaseError) = Unit
@@ -172,7 +137,7 @@ class MainList : AppCompatActivity() {
         })
     }
     private fun loadBanner(){
-        adView.adUnitId = AD_UNIT_ID
+        adView.adUnitId = getBannerId();
         adView.adSize = adSize
         val adRequest = AdRequest.Builder().build()
         adView.loadAd(adRequest)
