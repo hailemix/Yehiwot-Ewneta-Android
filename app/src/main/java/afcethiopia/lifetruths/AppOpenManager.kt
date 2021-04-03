@@ -13,6 +13,7 @@ import com.google.android.gms.ads.appopen.AppOpenAd
 import com.google.android.gms.ads.appopen.AppOpenAd.AppOpenAdLoadCallback
 import java.util.*
 
+
 class AppOpenManager(private val myApplication: MyApplication) : ActivityLifecycleCallbacks, LifecycleObserver {
     private var appOpenAd: AppOpenAd? = null
     private var loadTime: Long = 0
@@ -27,7 +28,7 @@ class AppOpenManager(private val myApplication: MyApplication) : ActivityLifecyc
     private fun showAdIfAvailable() {
         if (!isShowingAd && isAdAvailable) {
             Log.d(LOG_TAG, "Will show ad.")
-            val fullScreenContentCallback: FullScreenContentCallback = object : FullScreenContentCallback() {
+            object : FullScreenContentCallback() {
                 override fun onAdDismissedFullScreenContent() {
                     appOpenAd = null
                     isShowingAd = false
@@ -101,6 +102,5 @@ class AppOpenManager(private val myApplication: MyApplication) : ActivityLifecyc
     init {
         myApplication.registerActivityLifecycleCallbacks(this)
         ProcessLifecycleOwner.get().lifecycle.addObserver(this)
-        onStart()
     }
 }
