@@ -12,8 +12,8 @@ android {
         applicationId "afcethiopia.lifetruths"
         minSdkVersion 21
         targetSdkVersion 30
-        versionCode 16
-        versionName "2.2"
+        versionCode 17
+        versionName "2.3"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
         multiDexEnabled true
