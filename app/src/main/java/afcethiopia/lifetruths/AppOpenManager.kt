@@ -95,12 +95,12 @@ class AppOpenManager(private val myApplication: MyApplication) : ActivityLifecyc
 
     companion object {
         private const val LOG_TAG = "AppOpenManager"
-        private const val AD_UNIT_ID = "ca-app-pub-3940256099942544/3419835294" // **--->  Test Open Ad
+        private const val AD_UNIT_ID = "ca-app-pub-9156727777369518/7362343833" // **--->  Real Open Ad
         private var isShowingAd = false
     }
     init {
         myApplication.registerActivityLifecycleCallbacks(this)
         ProcessLifecycleOwner.get().lifecycle.addObserver(this)
-        RequestConfiguration.Builder().setTestDeviceIds(listOf("C41DA2A6C02F5C818A92EB62A4C5CF5D"));
+        onStart()
     }
 }

@@ -137,7 +137,7 @@ class MainList(bannerId: BannerIdCode = BannerImpl()) : AppCompatActivity(), Ban
         })
     }
     private fun loadBanner(){
-        adView.adUnitId = getBannerId();
+        adView.adUnitId = getBannerId()
         adView.adSize = adSize
         val adRequest = AdRequest.Builder().build()
         adView.loadAd(adRequest)

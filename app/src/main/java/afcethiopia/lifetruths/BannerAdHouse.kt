@@ -2,7 +2,7 @@ package afcethiopia.lifetruths
 
 class BannerImpl :BannerIdCode {
     override  fun getBannerId(): String {
-        return "ca-app-pub-3940256099942544/6300978111" //Test Banner Ad
+        return "ca-app-pub-9156727777369518/8629842401" //Read Banner Ad
     }
 }
 interface BannerIdCode {
