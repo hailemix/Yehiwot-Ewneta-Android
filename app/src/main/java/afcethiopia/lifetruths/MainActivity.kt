@@ -106,29 +106,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener{
     override fun onContextItemSelected(item: MenuItem): Boolean {
 
         when (item.itemId) {
-            R.id.about -> {
-                val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.ethiocoders.dev"))
-                intentController(intent)
-                return true
-            }
 
-            R.id.more_apps -> {
-
-                val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/dev?id=4732824418136294157"))
-                intentController(intent)
-                return true
-            }
-
-            R.id.rate -> {
-
-                try {
-                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=afcethiopia.lifetruths"))
-                    startActivity(intent)
-                } catch (e: Throwable) {
-
-                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse("http://play.google.com/store/apps/details?id=afcethiopia.lifetruths"))
-                    startActivity(intent)
-                }
+            R.id.support_us -> {
+                val intent = Intent(this@MainActivity, SupportUsClass::class.java)
+                startActivity(intent)
                 return true
             }
 

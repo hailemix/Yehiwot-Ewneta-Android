@@ -4,24 +4,13 @@ xmlns:app="http://schemas.android.com/apk/res-auto"
 tools:context="afcethiopia.lifetruths.MainActivity">
 
 <item
-    android:id="@+id/about"
-    android:title="@string/about_us"
-    app:showAsAction="ifRoom"/>
-
-<item
     android:id="@+id/youtube_videos"
     android:orderInCategory="100"
     android:title="@string/youtube_videos"
     app:showAsAction="never" />
 <item
-    android:id="@+id/more_apps"
-    android:title="@string/more_apps"
-    app:showAsAction="ifRoom" />
-
-<item
-    android:id="@+id/rate"
-    android:checked="false"
-    android:title="@string/rate_it"
+    android:id="@+id/support_us"
+    android:title="@string/support_us_menu"
     app:showAsAction="ifRoom" />
 <item
     android:id="@+id/action_privacy"
