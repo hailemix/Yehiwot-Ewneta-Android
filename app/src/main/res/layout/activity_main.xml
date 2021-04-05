@@ -36,7 +36,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:adjustViewBounds="false"
-                android:contentDescription="@string/about_us"
+                android:contentDescription="@string/support_us_menu"
                 app:srcCompat="@drawable/lister_menu"
                 />
 

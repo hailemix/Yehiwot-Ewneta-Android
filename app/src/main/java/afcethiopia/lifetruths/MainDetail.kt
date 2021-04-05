@@ -17,43 +17,15 @@
      * Created by user on 7/6/17.
      *
      */
-    class MainDetail(bannerDetailId: BannerIdCode = BannerImpl()) : AppCompatActivity(), BannerIdCode by bannerDetailId {
+    class MainDetail : AppCompatActivity() {
 
         private var mTextView: TextView? = null
         private var mScrollView: NestedScrollView? = null
         private var zTypeFace: Typeface? = null
-        private lateinit var bannerAdView : FrameLayout
-        private lateinit var adView: AdView
-
-       private val adSize: AdSize
-            get() {
-
-                val outMetrics = DisplayMetrics()
-                if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.R){
-                    val display = display
-                    display?.getRealMetrics(outMetrics)
-                } else {
-                    @Suppress("DEPRECATION")
-                    val display = windowManager.defaultDisplay
-                    @Suppress("DEPRECATION")
-                    display.getRealMetrics(outMetrics)
-                }
-                val density = outMetrics.density
-                var adWidthPixels = adView.width.toFloat()
-                if(adWidthPixels == 0f){
-                    adWidthPixels = outMetrics.widthPixels.toFloat()
-                }
-                val adWidth = (adWidthPixels / density).toInt()
-                return AdSize.getPortraitAnchoredAdaptiveBannerAdSize(this, adWidth)
-            }
 
         override fun onCreate(savedInstanceState: Bundle?) {
             super.onCreate(savedInstanceState)
             setContentView(R.layout.detailview)
-            bannerAdView = findViewById(R.id.detailAdaptiveBanner)
-            adView = AdView(this)
-            bannerAdView.addView(adView)
-            loadBanner()
             val myButton = findViewById<FloatingActionButton>(R.id.butOne)
             myButton.show()
 
@@ -93,13 +65,6 @@
                     startActivity(Intent.createChooser(myIntent,resources.getText(R.string.title)))
             }
             myTrace.stop()
-        }
-
-        private fun loadBanner() {
-            adView.adUnitId = getBannerId()
-            adView.adSize = adSize
-            val adRequest = AdRequest.Builder().build()
-            adView.loadAd(adRequest)
         }
     }
 

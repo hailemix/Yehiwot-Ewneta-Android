@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ImageView
+        android:id="@+id/supportPicture"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contentDescription="@string/app_name"
+        android:scaleType="fitXY"/>
+    <Button
+        android:id="@+id/support_now"
+        android:layout_width="190dp"
+        android:layout_height="60dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="70dp"
+        android:backgroundTint="@color/cardview_dark_background"
+        android:text="@string/support_us_button"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="100dp"
+        android:textSize="25sp" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_marginLeft="120dp"
+        android:layout_marginRight="40dp"
+        android:layout_centerVertical="true"
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:textAlignment="center"
+        android:textSize="23sp"
+        android:textColor="@color/blackBrown"
+        android:text="@string/SupportText" />
+</RelativeLayout>
